@@ -1,6 +1,6 @@
 # Gym Companion
 
-Projeto pessoal desenvolvido para registrar treinos de academia.
+Projeto pessoal desenvolvido para registrar treinos de academia, contagem de Água e contagem de cárdio (KMs andados)
 
 ## Objetivo
 

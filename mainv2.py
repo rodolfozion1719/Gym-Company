@@ -4,114 +4,144 @@ def treino_peito():
 
     print("\n===== Peito e Ombro =====")
 
-    print("1. Supino")
-    print("2. CrossOver (baixo)")
-    print("3. CrossOver (alto)")
-    print("4. Desenvolvimento")
-    print("5. Elevação Lateral (Polia)")
-    print("6. Elevação Lateral (Halter)")
+    exercicios = [
+        "Supino",
+        "CrossOver (Baixo)",
+        "CrossOver (Alto)",
+        "Desenvolvimento",
+        "Elevação Lateral (Polia)",
+        "Elevação Lateral (Halter)"
+    ]
+
+    for i, exercicio in enumerate(exercicios, start=1):
+        print(f"{i}. {exercicio}")
 
     escolha = int(input("Digite o número do exercício: "))
 
-    if escolha < 1 or escolha > 6:
+    if escolha < 1 or escolha > len(exercicios):
         print("Inválido")
         escolha = int(input("Digite um exercício válido: "))
 
     if escolha == 1:
 
+        supinos = [
+            "Reto (Halter)",
+            "Reto (Barra)",
+            "Inclinado (Halter)",
+            "Inclinado (Barra)",
+            "Declinado (Barra)"
+        ]
+
         print("\nQual Supino?")
 
-        print("1. Reto (Halter)")
-        print("2. Reto (Barra)")
-        print("3. Inclinado (Halter)")
-        print("4. Inclinado (Barra)")
-        print("5. Declinado (Barra)")
+        for i, supino in enumerate(supinos, start=1):
+            print(f"{i}. {supino}")
 
         tipo = int(input("Escolha: "))
 
-    return escolha
+        if tipo < 1 or tipo > len(supinos):
+            print("Inválido")
+            tipo = int(input("Digite uma opção válida: "))
+
+        return f"Supino - {supinos[tipo - 1]}"
+
+    return exercicios[escolha - 1]
 
 
 def treino_costas():
 
-    print("\n===== Costas e Antebraço =====")
+    exercicios = [
+        "Barra Fixa",
+        "Remada Baixa Iso-Lateral",
+        "Remada Baixa",
+        "Puxada Alta (Triângulo)",
+        "Pulldown",
+        "Remada Sentado",
+        "Abertura Invertida (Posterior Ombro)",
+        "Rosca de Pulso",
+        "Rosca Inversa"
+    ]
 
-    print("1. Barra Fixa")
-    print("2. Remada Baixa Iso-Lateral")
-    print("3. Remada Baixa")
-    print("4. Puxada Alta (Triângulo)")
-    print("5. Pulldown")
-    print("6. Remada Sentado")
-    print("7. Abertura Invertida (Posterior Ombro)")
-    print("8. Rosca de Pulso")
-    print("9. Rosca Inversa")
+    for i, exercicio in enumerate(exercicios, start=1):
+        print(f"{i}. {exercicio}")
 
-    escolha = int(input("Digite o número do exercício: "))
+    escolha = int(input("Escolha: "))
 
-    if escolha < 1 or escolha > 9:
-        print("Inválido")
-        escolha = int(input("Digite um exercício válido: "))
-
-    return escolha
+    return exercicios[escolha - 1]
 
 
 def treino_bracos():
 
-    print("\n ===== Tríceps e Bíceps =====")
+    print("\n===== Tríceps e Bíceps =====")
 
-    print("1. Tríceps na Polia (Corda)")
-    print("2. Extensão de Tríceps")
-    print("3. Sinuca Tríceps")
-    print("4. Francês")
-    print("5. Rosca Direta (Polia)")
-    print("6. Rosca por Trás")
-    print("7. Rosca Inclinada")
+    exercicios = [
+        "Tríceps na Polia (Corda)",
+        "Extensão de Tríceps",
+        "Sinuca Tríceps",
+        "Francês",
+        "Rosca Direta (Polia)",
+        "Rosca por Trás",
+        "Rosca Inclinada"
+    ]
+
+    for i, exercicio in enumerate(exercicios, start=1):
+        print(f"{i}. {exercicio}")
 
     escolha = int(input("Digite o número do exercício: "))
 
-    if escolha < 1 or escolha > 7:
+    if escolha < 1 or escolha > len(exercicios):
         print("Inválido")
         escolha = int(input("Digite um exercício válido: "))
 
-    return escolha
+    return exercicios[escolha - 1]
 
 def treino_pernas1():
 
-    print("\n ===== Quadríceps e Isquiossurais 1 =====")
+    print("\n===== Quadríceps e Isquiossurais 1 =====")
 
-    print("1. Hiperextensão de Lombar Com Peso")
-    print("2. Cadeira Adutora")
-    print("3. Cadeira Flexora")
-    print("4. Cadeira Extensora")
-    print("5. Elevação Panturrillha")
-    print("6. Panturrillha Sentado")
+    exercicios = [
+        "Hiperextensão de Lombar com Peso",
+        "Cadeira Adutora",
+        "Cadeira Flexora",
+        "Cadeira Extensora",
+        "Elevação de Panturrilha",
+        "Panturrilha Sentado"
+    ]
+
+    for i, exercicio in enumerate(exercicios, start=1):
+        print(f"{i}. {exercicio}")
 
     escolha = int(input("Digite o número do exercício: "))
-    
-    if escolha < 1 or escolha > 6:
+
+    if escolha < 1 or escolha > len(exercicios):
         print("Inválido")
         escolha = int(input("Digite um exercício válido: "))
-    
-    return escolha
-    
+
+    return exercicios[escolha - 1]
 
 def treino_pernas2():
-    print("\n ===== Quadríceps e Isquiossurais 2 =====")
 
-    print("1. Hiperextensão de Lombar Com Peso")
-    print("2. Cadeira Adutora")
-    print("3. Leg Press 45º")
-    print("4. Mesa Flexora")
-    print("5. Elevação Panturrillha")
-    print("6. Panturrillha Sentado")
+    print("\n===== Quadríceps e Isquiossurais 2 =====")
+
+    exercicios = [
+        "Hiperextensão de Lombar com Peso",
+        "Cadeira Adutora",
+        "Leg Press 45º",
+        "Mesa Flexora",
+        "Elevação de Panturrilha",
+        "Panturrilha Sentado"
+    ]
+
+    for i, exercicio in enumerate(exercicios, start=1):
+        print(f"{i}. {exercicio}")
 
     escolha = int(input("Digite o número do exercício: "))
-        
-    if escolha < 1 or escolha > 6:
+
+    if escolha < 1 or escolha > len(exercicios):
         print("Inválido")
         escolha = int(input("Digite um exercício válido: "))
-        
-    return escolha
+
+    return exercicios[escolha - 1]
 # ===========================
 # MENU PRINCIPAL
 # ===========================

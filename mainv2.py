@@ -5,7 +5,11 @@ def treino_peito():
     print("\n===== Peito e Ombro =====")
 
     exercicios = [
-        "Supino",
+        "Supino Reto (Halter)",
+        "Supino Reto (Barra)",
+        "Supino Inclinado (Halter)",
+        "Supino Inclinado (Barra)",
+        "Supino Declinado (Barra)",
         "CrossOver (Baixo)",
         "CrossOver (Alto)",
         "Desenvolvimento",
@@ -16,36 +20,7 @@ def treino_peito():
     for i, exercicio in enumerate(exercicios, start=1):
         print(f"{i}. {exercicio}")
 
-    escolha = int(input("Digite o número do exercício: "))
-
-    if escolha < 1 or escolha > len(exercicios):
-        print("Inválido")
-        escolha = int(input("Digite um exercício válido: "))
-
-    if escolha == 1:
-
-        supinos = [
-            "Reto (Halter)",
-            "Reto (Barra)",
-            "Inclinado (Halter)",
-            "Inclinado (Barra)",
-            "Declinado (Barra)"
-        ]
-
-        print("\nQual Supino?")
-
-        for i, supino in enumerate(supinos, start=1):
-            print(f"{i}. {supino}")
-
-        tipo = int(input("Escolha: "))
-
-        if tipo < 1 or tipo > len(supinos):
-            print("Inválido")
-            tipo = int(input("Digite uma opção válida: "))
-
-        return f"Supino - {supinos[tipo - 1]}"
-
-    return exercicios[escolha - 1]
+    return exercicios
 
 
 def treino_costas():
@@ -65,10 +40,8 @@ def treino_costas():
     for i, exercicio in enumerate(exercicios, start=1):
         print(f"{i}. {exercicio}")
 
-    escolha = int(input("Escolha: "))
 
-    return exercicios[escolha - 1]
-
+    return exercicios
 
 def treino_bracos():
 
@@ -87,13 +60,8 @@ def treino_bracos():
     for i, exercicio in enumerate(exercicios, start=1):
         print(f"{i}. {exercicio}")
 
-    escolha = int(input("Digite o número do exercício: "))
 
-    if escolha < 1 or escolha > len(exercicios):
-        print("Inválido")
-        escolha = int(input("Digite um exercício válido: "))
-
-    return exercicios[escolha - 1]
+    return exercicios
 
 def treino_pernas1():
 
@@ -111,13 +79,7 @@ def treino_pernas1():
     for i, exercicio in enumerate(exercicios, start=1):
         print(f"{i}. {exercicio}")
 
-    escolha = int(input("Digite o número do exercício: "))
-
-    if escolha < 1 or escolha > len(exercicios):
-        print("Inválido")
-        escolha = int(input("Digite um exercício válido: "))
-
-    return exercicios[escolha - 1]
+    return exercicios
 
 def treino_pernas2():
 
@@ -135,13 +97,8 @@ def treino_pernas2():
     for i, exercicio in enumerate(exercicios, start=1):
         print(f"{i}. {exercicio}")
 
-    escolha = int(input("Digite o número do exercício: "))
 
-    if escolha < 1 or escolha > len(exercicios):
-        print("Inválido")
-        escolha = int(input("Digite um exercício válido: "))
-
-    return exercicios[escolha - 1]
+    return exercicios
 # ===========================
 # MENU PRINCIPAL
 # ===========================
@@ -158,40 +115,41 @@ print("5. Perna 2")
 
 treino = int(input("\nMeu treino será de: "))
 
+
 print("===========================")
 print("ESCOLHA DO TREINO")
 print("===========================")
 
 if treino == 1:
     print("\nTreino de Peito e Ombro")
-    escolha = treino_peito()
+    exercicios = treino_peito()
 
 elif treino == 2:
     print("\nTreino de Costas e Antebraço")
-    escolha = treino_costas()
+    exercicios = treino_costas()
 
 elif treino == 3:
     print("\nTreino de Bíceps e Tríceps")
-    escolha = treino_bracos()
+    exercicios =  treino_bracos()
 
 elif treino == 4:
     print("\nTreino de Pernas 1")
-    escolha = treino_pernas1()
+    exercicios = treino_pernas1()
 elif treino == 5:
     print("\nTreino de Pernas 2.")
-    escolha = treino_pernas2()
+    exercicios = treino_pernas2()
 
-else:
-    print("\nTreino inválido.")
-    escolha = None
 
 print("===========================")
 print("REGISTRO DO TREINO")
 print("===========================")
 
-if escolha is not None:
 
-    carga = float(input("\nDigite a carga (kg): "))
+for exercicio in exercicios:
+
+    print(f"\nExercício: {exercicio}")
+
+    carga = float(input("Digite a carga (kg): "))
 
     series = int(input("Quantas séries? "))
 
@@ -201,9 +159,10 @@ if escolha is not None:
         rep = int(input(f"Repetições da série {i+1}: "))
         repeticoes.append(rep)
 
+    # depois guardaremos essas informações
     print("\n============ Treino Registrado ============")
 
-    print(f"Exercício: {escolha}")
+    print(f"Exercício: {exercicios}")
     print(f"Carga: {carga} kg")
     print(f"Séries: {series}")
     print(f"Repetições: {repeticoes}")

@@ -49,12 +49,16 @@ Gym-Company/
 └── README.md          # Apresentação do projeto no GitHub
 ```
 
+
+
 4. Divisão de Responsabilidades
 models.py: Contém as classes com os dados e cálculos matemáticos. Não utiliza comandos de terminal como input ou print.
 database.py: Centraliza as operações no banco SQLite (criar tabelas, inserir treinos e consultar histórico).
 
 main.py: Responsável pela interface com o usuário, exibição de menus e captura de dados pelo teclado.
 exercicios.py / treino.py: Armazenam cadastros fixos e rotinas para agilizar o preenchimento.
+
+
 
 6. Histórico de Versões
 v0.1.0 (Procedural): Primeira versão funcional em script único, com loops e listas simples no terminal.
@@ -65,6 +69,7 @@ v0.3.0 (Orientado a Objetos): Criação das classes Serie, Exercicio e Treino, m
 
 v0.4.0 (Persistência): Conexão com banco SQLite para gravar treinos de forma definitiva.
 
+
 7. Planejamento do Banco de Dados (SQLite)
 O banco de dados armazena os treinos em três estruturas conectadas:
 Treinos: Guarda o identificador do treino, data de realização, divisão muscular e volume total acumulado.
@@ -72,6 +77,7 @@ Treinos: Guarda o identificador do treino, data de realização, divisão muscul
 Exercícios do Treino: Guarda quais exercícios foram executados na sessão, vinculados ao identificador do treino correspondente.
 
 Séries: Guarda o número da série, carga em kg e repetições executadas, vinculadas ao identificador do exercício correspondente.
+
 
 9. Roadmap
 [x] v0.1.0: Entrada de repetições e ajuste dinâmico de carga

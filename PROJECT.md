@@ -120,6 +120,3 @@ O armazenamento persistente organiza os dados de treino em três entidades relac
 - [ ] **v0.5.0:** Consulta comparativa de progressão de carga em relação à sessão anterior do mesmo movimento
 - [ ] **v1.0.0:** CLI finalizada e polida, com suporte à exportação de relatórios em Markdown e CSV
 
-[ ] v0.5.0: Comparativo de evolução de carga em relação ao treino passado
-
-[ ] v1.0.0: CLI finalizada com exportação de relatórios

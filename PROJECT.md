@@ -1,4 +1,4 @@
-🐍# PROJECT: GymComp (Gym Companion)
+#🐍 PROJECT: GymComp (Gym Companion)
 
 Documento técnico com diretrizes, regras de negócio, arquitetura e planejamento do projeto.
 
@@ -52,25 +52,36 @@ Gym-Company/
 4. Divisão de Responsabilidades
 models.py: Contém as classes com os dados e cálculos matemáticos. Não utiliza comandos de terminal como input ou print.
 database.py: Centraliza as operações no banco SQLite (criar tabelas, inserir treinos e consultar histórico).
+
 main.py: Responsável pela interface com o usuário, exibição de menus e captura de dados pelo teclado.
 exercicios.py / treino.py: Armazenam cadastros fixos e rotinas para agilizar o preenchimento.
 
-5. Histórico de Versões
+6. Histórico de Versões
 v0.1.0 (Procedural): Primeira versão funcional em script único, com loops e listas simples no terminal.
+
 v0.2.0 (Estruturado): Correção do cálculo de tonelagem por série, fim dos erros de tipo e adição de resumo detalhado por exercício.
+
 v0.3.0 (Orientado a Objetos): Criação das classes Serie, Exercicio e Treino, movendo os cálculos para dentro dos objetos.
+
 v0.4.0 (Persistência): Conexão com banco SQLite para gravar treinos de forma definitiva.
 
-6. Planejamento do Banco de Dados (SQLite)
+7. Planejamento do Banco de Dados (SQLite)
 O banco de dados armazena os treinos em três estruturas conectadas:
 Treinos: Guarda o identificador do treino, data de realização, divisão muscular e volume total acumulado.
+
 Exercícios do Treino: Guarda quais exercícios foram executados na sessão, vinculados ao identificador do treino correspondente.
+
 Séries: Guarda o número da série, carga em kg e repetições executadas, vinculadas ao identificador do exercício correspondente.
 
-7. Roadmap
+9. Roadmap
 [x] v0.1.0: Entrada de repetições e ajuste dinâmico de carga
+
 [x] v0.2.0: Cálculo exato de volume de treino e relatório final
+
 [ ] v0.3.0: Organização em classes (POO) no models.py
+
 [ ] v0.4.0: Salvamento automático em SQLite (database.py)
+
 [ ] v0.5.0: Comparativo de evolução de carga em relação ao treino passado
+
 [ ] v1.0.0: CLI finalizada com exportação de relatórios

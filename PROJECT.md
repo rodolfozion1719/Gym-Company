@@ -1,4 +1,4 @@
-# PROJECT: GymComp (Gym Companion)
+🐍# PROJECT: GymComp (Gym Companion)
 
 Documento técnico com diretrizes, regras de negócio, arquitetura e planejamento do projeto.
 

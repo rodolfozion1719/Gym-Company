@@ -1,4 +1,3 @@
-
 #GymCompanion
 def treino_peito():
 
@@ -109,7 +108,7 @@ print("\nQual será seu treino de hoje?")
 
 print("\n1. Peito e Ombro")
 print("2. Costas e Antebraço")
-print("3. Tríceps e Bíceps")
+print("3. Tríceps e Bíceps") 
 print("4. Perna 1")
 print("5. Perna 2")
 
@@ -144,25 +143,59 @@ print("===========================")
 print("REGISTRO DO TREINO")
 print("===========================")
 
+treino_registrado = []
 
 for exercicio in exercicios:
-
     print(f"\nExercício: {exercicio}")
-
-    carga = float(input("Digite a carga (kg): "))
-
-    series = int(input("Quantas séries? "))
-
-    repeticoes = []
+    
+    series_dados = []
+    series = int(input("Quantas séries ? "))
+    carga = float(input("Carga inicial (kg): "))
 
     for i in range(series):
-        rep = int(input(f"Repetições da série {i+1}: "))
-        repeticoes.append(rep)
+        print(f"\nSérie {i+1}")
+        print(f"Carga atual: {carga} kg")
+        
+        rep = int(input("Repetições: "))
+        
+        
+        series_dados.append({"carga": carga, "reps": rep})
+        
+        if i < series - 1:
+            continuar = input("Manter a mesma carga? (s/n): ").strip().lower()
+            if continuar == "n":
+                carga = float(input("Nova carga: "))
 
-    # depois guardaremos essas informações
-    print("\n============ Treino Registrado ============")
+    peso_total = 0
+    cargas_utilizadas = []
+    reps_realizadas = []
 
-    print(f"Exercício: {exercicios}")
-    print(f"Carga: {carga} kg")
-    print(f"Séries: {series}")
-    print(f"Repetições: {repeticoes}")
+    for serie_info in series_dados:
+        peso_total += serie_info["carga"] * serie_info["reps"]
+        cargas_utilizadas.append(serie_info["carga"])
+        reps_realizadas.append(serie_info["reps"])
+
+    print("\n============ Exercício Registrado ============")
+    print(f"Exercício: {exercicio}")
+    print(f"Cargas: {cargas_utilizadas}")
+    print(f"Repetições: {reps_realizadas}")
+    print(f"Séries totais: {series}")
+    print(f"Volume total levantado: {peso_total:.1f} kg")
+
+    
+    treino_registrado.append({
+        "exercicio": exercicio,
+        "peso": cargas_utilizadas,
+        "peso_total": peso_total,
+        "series": series,
+        "repeticoes": reps_realizadas
+    })
+
+print("\n========== TREINO COMPLETO ==========")
+
+for registro in treino_registrado:
+    print(f"\nExercício: {registro['exercicio']}")
+    print(f"Cargas: {registro['peso']}")
+    print(f"Séries: {registro['series']}")
+    print(f"Repetições: {registro['repeticoes']}")
+    print(f"Volume total: {registro['peso_total']:.1f} kg")

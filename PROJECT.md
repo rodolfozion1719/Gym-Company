@@ -51,42 +51,74 @@ Gym-Company/
 
 
 
-4. Divisão de Responsabilidades
-models.py: Contém as classes com os dados e cálculos matemáticos. Não utiliza comandos de terminal como input ou print.
-database.py: Centraliza as operações no banco SQLite (criar tabelas, inserir treinos e consultar histórico).
+## 4. Divisão de Responsabilidades
 
-main.py: Responsável pela interface com o usuário, exibição de menus e captura de dados pelo teclado.
-exercicios.py / treino.py: Armazenam cadastros fixos e rotinas para agilizar o preenchimento.
+- **`models.py`:** Contém as classes de domínio (`Serie`, `Exercicio`, `Treino`) com seus atributos e métodos de cálculo matemático interno. Não executa chamadas de interface como `input()` ou `print()`.
+- **`database.py`:** Centraliza a camada de persistência com SQLite, isolando comandos de criação de tabelas, inserção de registros e consultas de histórico.
+- **`main.py`:** Ponto de entrada do sistema. Gerencia a interface de linha de comando (CLI), menus de navegação, captura de entradas do usuário e formatação dos relatórios na tela.
+- **`exercicios.py` / `treino.py`:** Armazenam o catálogo padrão de exercícios por grupo muscular e rotinas pré-montadas para agilizar a seleção durante o treino.
 
+---
 
+## 5. Histórico de Versões
 
-6. Histórico de Versões
-v0.1.0 (Procedural): Primeira versão funcional em script único, com loops e listas simples no terminal.
+- **`v0.1.0` (Procedural):** Primeira versão funcional desenvolvida como script único, utilizando variáveis em escopo aberto, loops simples e listas paralelas para registrar repetições e cargas.
+- **`v0.2.0` (Estruturado):** Correção do cálculo de volume por série, eliminação de erros de tipo (`TypeError`) e introdução de resumo consolidado por exercício ao fim de cada bloco.
+- **`v0.3.0` (Orientado a Objetos):** Implementação das classes `Serie`, `Exercicio` e `Treino`, encapsulando as regras de cálculo dentro dos próprios objetos e desacoplando a lógica da interface.
+- **`v0.4.0` (Persistência):** Integração com banco de dados relacional SQLite para gravação definitiva de sessões e consulta de treinos passados.
 
-v0.2.0 (Estruturado): Correção do cálculo de tonelagem por série, fim dos erros de tipo e adição de resumo detalhado por exercício.
+---
 
-v0.3.0 (Orientado a Objetos): Criação das classes Serie, Exercicio e Treino, movendo os cálculos para dentro dos objetos.
+## 6. Especificações Técnicas
 
-v0.4.0 (Persistência): Conexão com banco SQLite para gravar treinos de forma definitiva.
+- **Linguagem:** Python 3.8 ou superior
+- **Paradigma:** Programação Orientada a Objetos (POO) com arquitetura modular
+- **Dependências Externas:** Nenhuma (utilização exclusiva da biblioteca padrão do Python: `sqlite3`, `math`, `datetime`)
+- **Controle de Versão:** Git e repositório remoto no GitHub com fluxo baseado na branch `main`
 
+---
 
-7. Planejamento do Banco de Dados (SQLite)
-O banco de dados armazena os treinos em três estruturas conectadas:
-Treinos: Guarda o identificador do treino, data de realização, divisão muscular e volume total acumulado.
+## 7. Planejamento do Banco de Dados (SQLite)
 
-Exercícios do Treino: Guarda quais exercícios foram executados na sessão, vinculados ao identificador do treino correspondente.
+O armazenamento persistente organiza os dados de treino em três entidades relacionais conectadas:
 
-Séries: Guarda o número da série, carga em kg e repetições executadas, vinculadas ao identificador do exercício correspondente.
+- **Sessões de Treino:** Armazena o identificador único da sessão, data e hora de realização, divisão muscular (`Push`, `Pull`, `Legs`, etc.) e tonelagem total acumulada.
+- **Exercícios Executados:** Registra os movimentos realizados em cada sessão, mantendo vínculo com a sessão correspondente e guardando o volume total do exercício.
+- **Séries Realizadas:** Registra a ordem de cada série, carga em kg e quantidade de repetições concluídas, vinculadas diretamente ao exercício ao qual pertencem.
 
+---
 
-9. Roadmap
-[x] v0.1.0: Entrada de repetições e ajuste dinâmico de carga
+## 8. Estrutura das Tabelas
 
-[x] v0.2.0: Cálculo exato de volume de treino e relatório final
+- **Tabela `treinos`**
+  - `id`: Chave primária (inteiro com incremento automático)
+  - `data`: Data e hora da sessão (texto em formato ISO 8601)
+  - `divisao`: Nome da divisão muscular trabalhada (texto)
+  - `volume_total`: Tonelagem acumulada da sessão inteira (número decimal)
 
-[ ] v0.3.0: Organização em classes (POO) no models.py
+- **Tabela `exercicios_treino`**
+  - `id`: Chave primária (inteiro com incremento automático)
+  - `treino_id`: Chave estrangeira referenciando `treinos(id)`
+  - `nome`: Nome do exercício executado (texto)
+  - `volume`: Tonelagem acumulada no exercício (número decimal)
 
-[ ] v0.4.0: Salvamento automático em SQLite (database.py)
+- **Tabela `series`**
+  - `id`: Chave primária (inteiro com incremento automático)
+  - `exercicio_treino_id`: Chave estrangeira referenciando `exercicios_treino(id)`
+  - `numero_serie`: Índice sequencial da série no exercício (número inteiro)
+  - `carga`: Peso levantado em kg (número decimal)
+  - `repeticoes`: Quantidade de repetições completadas (número inteiro)
+
+---
+
+## 9. Roadmap
+
+- [x] **v0.1.0:** Registro procedural de repetições e ajuste dinâmico de carga entre séries
+- [x] **v0.2.0:** Correção matemática do cálculo de volume total e exibição de relatório final
+- [ ] **v0.3.0:** Refatoração completa para POO centralizada em `models.py`
+- [ ] **v0.4.0:** Gravação automática de treinos em banco SQLite local via `database.py`
+- [ ] **v0.5.0:** Consulta comparativa de progressão de carga em relação à sessão anterior do mesmo movimento
+- [ ] **v1.0.0:** CLI finalizada e polida, com suporte à exportação de relatórios em Markdown e CSV
 
 [ ] v0.5.0: Comparativo de evolução de carga em relação ao treino passado
 
